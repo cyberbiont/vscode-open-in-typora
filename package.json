@@ -1,50 +1,53 @@
 {
-	"name": "vscode-open-in-typora",
-	"displayName": "open in Typora",
-	"description": "open Markdown files from VSCode in Typora",
-	"version": "1.0.0",
-	"publisher": "Yaroslav Larin",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/cyberbiont/vscode-open-in-typora.git"
-	},
-	"icon": "images/app-icon-typora.png",
-	"engines": {
-		"vscode": "^1.38.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"keywords": [
-		"Markdown", "Typora", "open", "external editor"
-	],
-	"activationEvents": [
-		"onCommand:typora.open"
-	],
-	"main": "./extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "typora.open",
-				"title": "Open in Typora",
-				"category": "Typora",
-				"when": "editorLangId == markdown"
-			}
-		]
-	},
-	"scripts": {
-		"test": "node ./test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/glob": "^7.1.1",
-		"@types/mocha": "^5.2.6",
-		"@types/node": "^10.12.21",
-		"@types/vscode": "^1.38.0",
-		"eslint": "^5.13.0",
-		"glob": "^7.1.4",
-		"mocha": "^6.1.4",
-		"typescript": "^3.3.1",
-		"vscode-test": "^1.2.0"
-	},
-	"dependencies": {}
+  "name": "vscode-open-in-typora",
+  "displayName": "open in Typora",
+  "description": "open Markdown files from VSCode in Typora",
+  "version": "1.0.0",
+  "publisher": "cyberbiont",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyberbiont/vscode-open-in-typora.git"
+  },
+  "icon": "images/app-icon-typora.png",
+  "engines": {
+    "vscode": "^1.38.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "Markdown",
+    "Typora",
+    "open",
+    "external editor"
+  ],
+  "activationEvents": [
+    "onCommand:typora.open"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "typora.open",
+        "title": "Open in Typora",
+        "category": "Typora",
+        "when": "editorLangId == markdown"
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.12.21",
+    "@types/vscode": "^1.38.0",
+    "eslint": "^5.13.0",
+    "glob": "^7.1.4",
+    "mocha": "^6.1.4",
+    "typescript": "^3.3.1",
+    "vscode-test": "^1.2.0"
+  },
+  "dependencies": {}
 }
