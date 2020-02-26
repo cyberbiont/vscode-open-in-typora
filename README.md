@@ -2,9 +2,9 @@
 
 ## Features
 
-The provided command `typora.open` opens files, that use Markdown language mode, in Typora editor.
+The provided command `typora.open` opens files that use Markdown language mode in Typora editor.
 
-Due to some obscure problem, opening files in Typora via Node's childProcess doesn't work (and conseqently any extensions that use npm 'open' package) hence this extension uses VSCode terminal to run Typora.
+Because if some obscure problem, opening files in Typora via Node's childProcess doesn't work (and consequently any extensions that use npm 'open' package as well). Hence this extension uses VSCode terminal to run Typora.
 
 ## Requirements
 
@@ -12,11 +12,10 @@ You must have Typora installed and typora.exe in the system's PATH.
 
 ## Known Issues
 
-Presumably it will work on all platforms but at the moment I have tested it on Windows only.
+Presumably it will work on all platforms, but at the moment I have tested it on Windows only.
 
-Typora has multiple tabs, but currently, there's no option in Typora use single window only when opening files.
-So each time you launch `typora.open` command it will open a new Typora window.
-You can track the issue on [GitHub](https://github.com/typora/typora-issues/issues/1000).
+Typora has multiple tabs, but currently there's no option in Typora to use single window only when opening files. So each time you launch `typora.open` command it will open a new Typora window.
+You can track this issue on [GitHub](https://github.com/typora/typora-issues/issues/1000).
 
 ## Bonus Tip
 
