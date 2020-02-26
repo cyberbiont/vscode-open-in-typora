@@ -1,6 +1,9 @@
+name: Deploy Extension with vsce
+
 on:
-  release: [create]
-name: Deploy Extension
+  release: 
+    types: [published]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
