@@ -1,6 +1,6 @@
 {
   "name": "vscode-open-in-typora",
-  "displayName": "open in Typora",
+  "displayName": "Open in Typora",
   "description": "open Markdown files from VSCode in Typora",
   "version": "1.0.0",
   "publisher": "cyberbiont",
@@ -8,6 +8,7 @@
     "type": "git",
     "url": "https://github.com/cyberbiont/vscode-open-in-typora.git"
   },
+  "license": "MIT",
   "icon": "images/app-icon-typora.png",
   "engines": {
     "vscode": "^1.38.0"
