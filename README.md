@@ -1,10 +1,12 @@
 # open-in-typora
 
+Opens Markdown files in Typora.
+
 ## Features
 
-The provided command `typora.open` opens files that use Markdown language mode in Typora editor.
+The provided command `typora.open` opens files that use Markdown language mode (.md, .mdown,.markdown) in Typora editor.
 
-Because if some obscure problem, opening files in Typora via Node's childProcess doesn't work (and consequently any extensions that use npm 'open' package as well). Hence this extension uses VSCode terminal to run Typora.
+Because of some obscure problem, opening files in Typora via Node's `childProcess` doesn't work (and consequently any extensions that use npm 'open' package as well). No other extension that I tried worked for me, so I wrote this. This extension uses VSCode terminal to run Typora.
 
 ## Requirements
 
