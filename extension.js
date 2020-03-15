@@ -46,7 +46,7 @@ function activate(context) {
 }
 exports.activate = activate;
 
-function deactivate() {}
+function deactivate() { }
 
 module.exports = {
   activate,
