@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.3
+- Added searching for Typora path on Windows
+
 ## 1.0.2
 
 - More README fixes
