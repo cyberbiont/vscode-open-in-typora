@@ -7,15 +7,15 @@ const vscode = require("vscode"),
   defaultTyporaPath = "C:\\Program Files\\Typora\\Typora.exe",
   alternativeTyporaPath = "C:\\Program Files (x86)\\Typora\\Typora.exe";
 
-  let typoraPath = vscode.workspace.getConfiguration("open-in-typora").get("typoraPath"); //Fix for #4, names are not final.
+  let typoraPath = vscode.workspace.getConfiguration("open-in-typora").get("typoraPath");
   if (!typoraPath) {
     if (fileExists(defaultTyporaPath)) {
       typoraPath= defaultTyporaPath;
     } else if (fileExists(alternativeTyporaPath)) {
       typoraPath=alternativeTyporaPath;
     }
-  } //Try getting the default installation of typora
-  if (!typoraPath) { typoraPath = "typora" } //Use PATH as last resort
+  }
+  if (!typoraPath) { typoraPath = "typora" }
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -44,7 +44,6 @@ function activate(context) {
       try {
         terminal.sendText(
           `"${typoraPath}" "${vscode.window.activeTextEditor.document.fileName}"`
-          //Put quotes around the path to prevent errors with spaced paths. e.g. "C:\Program Files\"
         );
         vscode.window.showInformationMessage("Opening Typora");
       } catch (e) {
