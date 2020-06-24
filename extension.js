@@ -2,20 +2,27 @@
 
 // 🕮 <cyberbiont> 04d058ab-e96b-4f18-8ecb-acaa8f7cfe44.md
 
-const vscode = require("vscode"),
-  fileExists = require("fs").existsSync,
-  defaultTyporaPath = "C:\\Program Files\\Typora\\Typora.exe",
-  alternativeTyporaPath = "C:\\Program Files (x86)\\Typora\\Typora.exe";
+const vscode = require("vscode");
 
-  let typoraPath = vscode.workspace.getConfiguration("open-in-typora").get("typoraPath");
-  if (!typoraPath) {
-    if (fileExists(defaultTyporaPath)) {
-      typoraPath= defaultTyporaPath;
-    } else if (fileExists(alternativeTyporaPath)) {
-      typoraPath=alternativeTyporaPath;
-    }
+
+const typoraPath = (() => {
+  const { platform } = require("process");
+  if (platform !== "win32") {
+    return "typora";
   }
-  if (!typoraPath) { typoraPath = "typora" }
+  const fileExists = require("fs").existsSync,
+    defaultTyporaPath = "C:\\Program Files\\Typora\\Typora.exe",
+    alternativeTyporaPath = "C:\\Program Files (x86)\\Typora\\Typora.exe";
+
+  const configValue = vscode.workspace.getConfiguration("open-in-typora").get("typoraPath");
+  if (configValue) { return configValue; }
+  if (fileExists(defaultTyporaPath)) {
+    return defaultTyporaPath;
+  } else if (fileExists(alternativeTyporaPath)) {
+    return alternativeTyporaPath;
+  }
+  return "typora";
+})();
 
 /**
  * @param {vscode.ExtensionContext} context
