@@ -34,7 +34,18 @@
         "category": "Typora",
         "when": "editorLangId == markdown"
       }
-    ]
+    ],
+    "configuration":{
+      "title": "Open In Typora",
+      "properties": {
+        "open-in-typora.typoraPath":{
+          "type":"string",
+          "default":"",
+          "scope": "machine",
+          "description": "Typora's absolute path. Only used for Windows, if Typora is not installed in it's default location."
+        }
+      }
+    }
   },
   "scripts": {
     "test": "node ./test/runTest.js"
