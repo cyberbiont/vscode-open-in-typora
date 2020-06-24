@@ -1,6 +1,6 @@
 "use strict";
 
-// 🕮 04d058ab-e96b-4f18-8ecb-acaa8f7cfe44.md
+// 🕮 <cyberbiont> 04d058ab-e96b-4f18-8ecb-acaa8f7cfe44.md
 
 const vscode = require("vscode"),
   fileExists = require("fs").existsSync,
@@ -23,7 +23,7 @@ const vscode = require("vscode"),
 function activate(context) {
   const terminal = vscode.window.createTerminal({
     name: "Typora",
-    hideFromUser: false
+    hideFromUser: true
   });
 
   function openInTypora() {
