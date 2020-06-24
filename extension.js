@@ -1,8 +1,21 @@
 "use strict";
 
-// 🕮 <cyberbiont> 04d058ab-e96b-4f18-8ecb-acaa8f7cfe44.md
+// 🕮 04d058ab-e96b-4f18-8ecb-acaa8f7cfe44.md
 
-const vscode = require("vscode");
+const vscode = require("vscode"),
+  fileExists = require("fs").existsSync,
+  defaultTyporaPath = "C:\\Program Files\\Typora\\Typora.exe",
+  alternativeTyporaPath = "C:\\Program Files (x86)\\Typora\\Typora.exe";
+
+  let typoraPath = vscode.workspace.getConfiguration("open-in-typora").get("typoraPath"); //Fix for #4, names are not final.
+  if (!typoraPath) {
+    if (fileExists(defaultTyporaPath)) {
+      typoraPath= defaultTyporaPath;
+    } else if (fileExists(alternativeTyporaPath)) {
+      typoraPath=alternativeTyporaPath;
+    }
+  } //Try getting the default installation of typora
+  if (!typoraPath) { typoraPath = "typora" } //Use PATH as last resort
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -10,7 +23,7 @@ const vscode = require("vscode");
 function activate(context) {
   const terminal = vscode.window.createTerminal({
     name: "Typora",
-    hideFromUser: true
+    hideFromUser: false
   });
 
   function openInTypora() {
@@ -30,7 +43,8 @@ function activate(context) {
     } else {
       try {
         terminal.sendText(
-          `typora "${vscode.window.activeTextEditor.document.fileName}"`
+          `"${typoraPath}" "${vscode.window.activeTextEditor.document.fileName}"`
+          //Put quotes around the path to prevent errors with spaced paths. e.g. "C:\Program Files\"
         );
         vscode.window.showInformationMessage("Opening Typora");
       } catch (e) {
