@@ -6,13 +6,13 @@ const vscode = require("vscode");
 
 
 const typoraPath = (() => {
-  const { platform } = require("process");
+  const { platform, env } = require("process");
   if (platform !== "win32") {
     return "typora";
   }
   const fileExists = require("fs").existsSync,
-    defaultTyporaPath = "C:\\Program Files\\Typora\\Typora.exe",
-    alternativeTyporaPath = "C:\\Program Files (x86)\\Typora\\Typora.exe";
+    defaultTyporaPath = env.ProgramFiles + "\\Typora\\Typora.exe",
+    alternativeTyporaPath = env["ProgramFiles(x86)"] + "\\Typora\\Typora.exe";
 
   const configValue = vscode.workspace.getConfiguration("open-in-typora").get("typoraPath");
   if (configValue) { return configValue; }
