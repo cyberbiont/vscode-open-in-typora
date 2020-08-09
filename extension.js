@@ -32,7 +32,7 @@ function activate(context) {
         terminal.sendText(
           `typora "${vscode.window.activeTextEditor.document.fileName}"`
         );
-        vscode.window.showInformationMessage("Opening Typora");
+        vscode.window.showInformationMessage("Starting Typora");
       } catch (e) {
         vscode.window.showInformationMessage(
           `Failed to open file: ${vscode.window.activeTextEditor.document.fileName} in Typora!`
