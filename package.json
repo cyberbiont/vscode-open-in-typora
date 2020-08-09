@@ -23,7 +23,8 @@
     "external editor"
   ],
   "activationEvents": [
-    "onCommand:typora.open"
+    "onCommand:typora.open",
+    "onLanguage:markdown"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -34,7 +35,23 @@
         "category": "Typora",
         "when": "editorLangId == markdown"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "typora.open",
+          "group": "navigation",
+          "when": "editorLangId == markdown"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "typora.open",
+          "group": "navigation",
+          "when": "resourceLangId == markdown"
+        }
+      ]
+    }
   },
   "scripts": {
     "test": "node ./test/runTest.js"
