@@ -8,6 +8,8 @@ The provided command `typora.open` opens files that use Markdown language mode (
 
 Because of some obscure problem, opening files in Typora via Node's `childProcess` doesn't work (and consequently any extensions that use npm 'open' package as well). No other extension that I tried worked for me, so I wrote this. This extension uses VSCode terminal to run Typora.
 
+Extension also contributes context menu commands (in editor and explorer as well) and status bar button.
+
 ## Requirements
 
 You must have Typora installed and typora.exe in the system's PATH.
@@ -39,3 +41,7 @@ Here is the settings block you need to put in your settings.json (change it to t
 	}]
 }
 ```
+
+## Credits
+
+[alexzshl](https://github.com/alexzshl) - for context menu commands and status bar.

@@ -3,8 +3,8 @@
 // 🕮 <cyberbiont> 04d058ab-e96b-4f18-8ecb-acaa8f7cfe44.md
 
 const vscode = require("vscode");
-let statusBarArray = [];
-let commandHandleArrray = [];
+const statusBarArray = [];
+const commandHandleArray = [];
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -43,7 +43,7 @@ function activate(context) {
     }
   }
   let disposable = vscode.commands.registerCommand("typora.open", openInTypora);
-  commandHandleArrray.push(disposable);
+  commandHandleArray.push(disposable);
   context.subscriptions.push(disposable);
 
   const bar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right);
@@ -71,7 +71,7 @@ function clear() {
   statusBarArray.forEach(i => {
     i.dispose();
   });
-  commandHandleArrray.forEach(i => {
+  commandHandleArray.forEach(i => {
     i.dispose();
   });
 }
