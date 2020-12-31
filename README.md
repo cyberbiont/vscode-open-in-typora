@@ -13,6 +13,7 @@ Extension also contributes context menu commands (in editor and explorer as well
 ## Requirements
 
 You must have Typora installed and typora.exe in the system's PATH.
+To add Typora to your PATH, you can check [this guide](./addToPATH.md).
 
 ## Known Issues
 
