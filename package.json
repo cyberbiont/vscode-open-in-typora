@@ -28,7 +28,7 @@
   ],
   "main": "./extension.js",
   "contributes": {
-    "configuration":[
+    "configuration": [
       {
         "title": "Open In Typora",
         "properties": {
@@ -86,5 +86,10 @@
   "devDependencies": {
     "eslint": "^6.8.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "__metadata": {
+    "id": "e6a37afc-cf84-42f8-9472-726ca68b01a1",
+    "publisherDisplayName": "Yaroslav Larin",
+    "publisherId": "9d8e8d20-25e3-4573-af62-19a5b2bcfb27"
+  }
 }
