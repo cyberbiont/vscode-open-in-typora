@@ -45,4 +45,5 @@ Here is the settings block you need to put in your settings.json (change it to t
 
 ## Credits
 
-[alexzshl](https://github.com/alexzshl) - for context menu commands and status bar.
+[alexzshl](https://github.com/alexzshl) - for context menu commands and status bar and configuration options.
+[fbarda](https://github.com/fbarda) - for the guide on adding Typora executable to PATH

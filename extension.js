@@ -72,7 +72,7 @@ function activate(context) {
     })
   );
 
-  function showStatusBar(languageId, showStatusBarConfig) {
+  function showStatusBar(languageId) {
     if (
       languageId == "markdown" &&
       vscode.workspace.getConfiguration("openInTypora").get("showStatusBar")
