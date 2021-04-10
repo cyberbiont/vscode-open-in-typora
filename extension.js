@@ -5,6 +5,7 @@
 const vscode = require("vscode");
 const statusBarArray = [];
 const commandHandleArray = [];
+const os = require("os");
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -12,7 +13,7 @@ const commandHandleArray = [];
 function activate(context) {
   const terminal = vscode.window.createTerminal({
     name: "Typora",
-    hideFromUser: true
+    hideFromUser: true,
   });
 
   function openInTypora() {
@@ -32,9 +33,16 @@ function activate(context) {
     } else {
       try {
         terminal.sendText(
-          `typora "${vscode.window.activeTextEditor.document.fileName}"`
+          `${os.type() === "Darwin" ? "open -a " : ""}typora "${
+            vscode.window.activeTextEditor.document.fileName
+          }"`
         );
-        if (vscode.workspace.getConfiguration("openInTypora").get("showSuccessInformationMessage")) {
+
+        if (
+          vscode.workspace
+            .getConfiguration("openInTypora")
+            .get("showSuccessInformationMessage")
+        ) {
           vscode.window.showInformationMessage("Starting Typora");
         }
       } catch (e) {
@@ -48,7 +56,9 @@ function activate(context) {
   commandHandleArray.push(disposable);
   context.subscriptions.push(disposable);
 
-  const bar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right);
+  const bar = vscode.window.createStatusBarItem(
+    vscode.StatusBarAlignment.Right
+  );
   bar.text = "$(book) Typora";
   bar.tooltip = "Open in Typora";
   bar.command = "typora.open";
@@ -56,12 +66,17 @@ function activate(context) {
   statusBarArray.push(bar);
   context.subscriptions.push(bar);
 
-  context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor((e) => {
-    showStatusBar(e.document.languageId);
-  }))
+  context.subscriptions.push(
+    vscode.window.onDidChangeActiveTextEditor((e) => {
+      showStatusBar(e.document.languageId);
+    })
+  );
 
   function showStatusBar(languageId, showStatusBarConfig) {
-    if (languageId == "markdown" && vscode.workspace.getConfiguration("openInTypora").get("showStatusBar")) {
+    if (
+      languageId == "markdown" &&
+      vscode.workspace.getConfiguration("openInTypora").get("showStatusBar")
+    ) {
       bar.show();
     } else {
       bar.hide();
@@ -70,14 +85,13 @@ function activate(context) {
 }
 
 function clear() {
-  statusBarArray.forEach(i => {
+  statusBarArray.forEach((i) => {
     i.dispose();
   });
-  commandHandleArray.forEach(i => {
+  commandHandleArray.forEach((i) => {
     i.dispose();
   });
 }
-
 
 function deactivate() {
   clear();
