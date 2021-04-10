@@ -28,6 +28,33 @@
   ],
   "main": "./extension.js",
   "contributes": {
+    "configuration":[
+      {
+        "title": "Open In Typora",
+        "properties": {
+          "openInTypora.showSuccessInformationMessage": {
+            "type": "boolean",
+            "default": false,
+            "description": "Show information message on success"
+          },
+          "openInTypora.showStatusBar": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show status bar"
+          },
+          "openInTypora.showContextMenuInEditor": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show context menu in editor"
+          },
+          "openInTypora.showContextMenuInExplorer": {
+            "type": "boolean",
+            "default": true,
+            "description": "Show context menu in explorer"
+          }
+        }
+      }
+    ],
     "commands": [
       {
         "command": "typora.open",
@@ -41,14 +68,14 @@
         {
           "command": "typora.open",
           "group": "navigation",
-          "when": "editorLangId == markdown"
+          "when": "editorLangId == markdown && config.openInTypora.showContextMenuInEditor"
         }
       ],
       "explorer/context": [
         {
           "command": "typora.open",
           "group": "navigation",
-          "when": "resourceLangId == markdown"
+          "when": "resourceLangId == markdown && config.openInTypora.showContextMenuInExplorer"
         }
       ]
     }

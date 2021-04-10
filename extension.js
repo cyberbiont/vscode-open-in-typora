@@ -34,7 +34,9 @@ function activate(context) {
         terminal.sendText(
           `typora "${vscode.window.activeTextEditor.document.fileName}"`
         );
-        vscode.window.showInformationMessage("Starting Typora");
+        if (vscode.workspace.getConfiguration("openInTypora").get("showSuccessInformationMessage")) {
+          vscode.window.showInformationMessage("Starting Typora");
+        }
       } catch (e) {
         vscode.window.showInformationMessage(
           `Failed to open file: ${vscode.window.activeTextEditor.document.fileName} in Typora!`
@@ -48,23 +50,23 @@ function activate(context) {
 
   const bar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right);
   bar.text = "$(book) Typora";
-  bar.tooltip = "Open current markdown file in Typora";
+  bar.tooltip = "Open in Typora";
   bar.command = "typora.open";
-  if (vscode.window.activeTextEditor.document.languageId == "markdown") {
-    bar.show();
-  } else {
-    bar.hide();
-  }
+  showStatusBar(vscode.window.activeTextEditor.document.languageId);
   statusBarArray.push(bar);
   context.subscriptions.push(bar);
 
   context.subscriptions.push(vscode.window.onDidChangeActiveTextEditor((e) => {
-    if (e.document.languageId == "markdown") {
+    showStatusBar(e.document.languageId);
+  }))
+
+  function showStatusBar(languageId, showStatusBarConfig) {
+    if (languageId == "markdown" && vscode.workspace.getConfiguration("openInTypora").get("showStatusBar")) {
       bar.show();
     } else {
       bar.hide();
     }
-  }))
+  }
 }
 
 function clear() {
