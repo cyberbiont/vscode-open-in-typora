@@ -24,7 +24,7 @@ You can track this issue on [GitHub](https://github.com/typora/typora-issues/iss
 
 ## Bonus Tip
 
-You can combine this extension with [Power-Tools extension](https://marketplace.visualstudio.com/items?itemName=ego-digital.vscode-powertools) to create a handy button on your taskbar, which will be highlighted if the file you are editing can be opened in Typora.
+You can combine this extension with [Power-Tools extension](https://marketplace.visualstudio.com/items?itemName=egomobile.vscode-powertools) to create a handy button on your taskbar, which will be highlighted if the file you are editing can be opened in Typora.
 
 Here is the settings block you need to put in your settings.json (change it to taste):
 
